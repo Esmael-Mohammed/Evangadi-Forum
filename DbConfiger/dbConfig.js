@@ -14,3 +14,5 @@ dbConnection.execute("select ' test'",(err,result)=>{
         console.log(result) 
     }
 })
+
+module.exports=dbConnection.promise();
