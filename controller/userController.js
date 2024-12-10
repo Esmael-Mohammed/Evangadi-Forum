@@ -66,6 +66,8 @@ try {
 
 }
 async function checkUser(req, res) {
-  res.send("check user");
+  const userName=req.user.userName;
+  const userid=req.user.userid;
+  res.status(StatusCodes.OK).json({msg:"valid user",userName,userid})
 }
 module.exports = { register, login, checkUser };

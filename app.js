@@ -12,6 +12,11 @@ const dbConnection=require('./DbConfiger/dbConfig.js')
 // user routers middleware file
 const userRoutes=require('./routes/userRoute.js')
 
+// question route middleware file
+const questionRoutes=require('./routes/questionRoute.js')
+
+// question router middleware
+app.use('/api/questions',questionRoutes);
 
 // json middleware to extract json data
 app.use(express.json())
