@@ -1,4 +1,5 @@
 const bcrypt=require('bcrypt')
+const jwt=require('jsonwebtoken')
 const {StatusCodes}=require('http-status-codes')
 //db connection
 const dbConnection = require("../DbConfiger/dbConfig.js");
@@ -51,7 +52,11 @@ try {
   if(!passwordMatch){
     return res.status(StatusCodes.BAD_REQUEST).json({msg:"Invalid credental!"});
   }
-  
+  const userName=userExisting[0].userName;
+  const userid=userExisting[0].userid;
+  const token=jwt.sign({userName,userid},"secret",{expiresIn:"1d"});
+  res.status(StatusCodes.OK).json({msg:"user login successful",token})
+
 } catch (error) {
   console.log(error.message);
       return res
